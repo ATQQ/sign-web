@@ -6,7 +6,7 @@ const http = axios;
 http.defaults.baseURL =
   process.env.NODE_ENV !== "production"
     ? "/api"
-    : "https://sign-web-9g25dl602379ebf0-1256505457.ap-shanghai.app.tcloudbase.com";
+    : "https://service-agthqjcf-1256505457.cd.apigw.tencentcs.com/release/";
 http.defaults.headers = {
   "content-Type": "application/json"
 };
