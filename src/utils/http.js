@@ -3,7 +3,10 @@ import { StatusCode } from "../constants";
 import router from "../router";
 
 const http = axios;
-http.defaults.baseURL = "/api";
+http.defaults.baseURL =
+  process.env.NODE_ENV !== "production"
+    ? "/api"
+    : "https://sign-web-9g25dl602379ebf0-1256505457.ap-shanghai.app.tcloudbase.com";
 http.defaults.headers = {
   "content-Type": "application/json"
 };
