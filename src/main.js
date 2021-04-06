@@ -5,6 +5,7 @@ import http from "./utils/http";
 import api from "./api/index";
 import dateFormat from "./utils/dateFormat";
 import store from "./store";
+import './plugins/element.js'
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
