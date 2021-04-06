@@ -7,7 +7,11 @@ import {
   Main,
   Link,
   Step,
-  Steps
+  Steps,
+  Menu,
+  MenuItem,
+  PageHeader,
+  Tag
 } from "element-ui";
 
 Vue.use(Button);
@@ -18,3 +22,7 @@ Vue.use(Input);
 Vue.use(Link);
 Vue.use(Step);
 Vue.use(Steps);
+Vue.use(Menu);
+Vue.use(MenuItem);
+Vue.use(PageHeader);
+Vue.use(Tag);
