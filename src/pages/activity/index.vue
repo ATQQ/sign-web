@@ -11,6 +11,23 @@
         >刷新</el-button
       >
     </h1>
+    <el-popover class="logout" placement="top" width="160" v-model="visible">
+      <p>确定退出登录吗？</p>
+      <div style="text-align: right; margin: 0">
+        <el-button size="mini" type="text" @click="visible = false"
+          >取消</el-button
+        >
+        <el-button type="primary" size="mini" @click="logout">确定</el-button>
+      </div>
+      <el-button
+        slot="reference"
+        style="margin-left:20px;"
+        type="danger"
+        size="mini"
+        icon="el-icon-close"
+        >退出登录</el-button
+      >
+    </el-popover>
     <ul>
       <li v-for="(a, idx) in manageActivities" :key="a.activityId">
         <router-link
@@ -31,7 +48,8 @@ import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      title: "活动列表"
+      title: "活动列表",
+      visible: false
     };
   },
   computed: {
@@ -46,6 +64,11 @@ export default {
           showClose: true
         });
       });
+    },
+    logout() {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+      this.visible = false;
     }
   },
   mounted() {
@@ -69,5 +92,10 @@ ul {
 ul li {
   margin: 10px;
   font-weight: bold;
+}
+.logout {
+  position: fixed;
+  right: 20px;
+  top: 20px;
 }
 </style>

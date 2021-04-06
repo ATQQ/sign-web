@@ -11,7 +11,8 @@ import {
   Menu,
   MenuItem,
   PageHeader,
-  Tag
+  Tag,
+  Popover
 } from "element-ui";
 
 Vue.use(Button);
@@ -26,3 +27,4 @@ Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(PageHeader);
 Vue.use(Tag);
+Vue.use(Popover);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { StatusCode } from "../constants";
 import router from "../router";
-
+import { Message } from "element-ui";
 const http = axios;
 http.defaults.baseURL =
   process.env.NODE_ENV !== "production"
@@ -54,9 +54,7 @@ http.interceptors.response.use(
           break;
       }
       if (errMsg) {
-        // uni.showToast({
-        //   title: errMsg
-        // })
+        Message.error(errMsg);
       }
       return Promise.reject(response.data);
     }
