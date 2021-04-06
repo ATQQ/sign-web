@@ -1,7 +1,7 @@
 <template>
   <div class="sign-list">
     <el-container>
-      <el-aside width="500px">
+      <el-aside width="500px" v-show="showList">
         <h1>创建新签到</h1>
         <div class="create-sign">
           <el-input
@@ -54,7 +54,21 @@
           </el-collapse-item>
         </el-collapse>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main id="main">
+        <sign-detail :signId="signId" />
+      </el-main>
+
+      <!-- 辅助按钮栏 -->
+      <el-aside width="200px">
+        <div class="tool-btns">
+          <el-button type="primary" size="mini" @click="showList = !showList"
+            >显示/隐藏签到列表</el-button
+          >
+          <el-button type="primary" size="mini" @click="fullScreen"
+            >全屏</el-button
+          >
+        </div>
+      </el-aside>
     </el-container>
   </div>
 </template>
@@ -63,7 +77,11 @@
 import { mapActions, mapState } from "vuex";
 import { Message } from "element-ui";
 import { SignStatusText, SignStatus } from "@/constants";
+import SignDetail from "./components/detail";
 export default {
+  components: {
+    SignDetail
+  },
   data() {
     return {
       time: 5,
@@ -74,7 +92,9 @@ export default {
         [SignStatus.ing]: "success",
         [SignStatus.over]: "danger",
         [SignStatus.pause]: "primary"
-      }
+      },
+      signId: "",
+      showList: true
     };
   },
   computed: {
@@ -85,6 +105,9 @@ export default {
   },
   methods: {
     ...mapActions("sign", ["getSignListByActivityId"]),
+    fullScreen() {
+      document.getElementById("main").requestFullscreen();
+    },
     startNew() {
       // 默认位置四川省政府
       this.$api.sign
@@ -107,7 +130,12 @@ export default {
       if (!signId) {
         return;
       }
-      console.log(signId);
+      this.signId = signId;
+      const sign = this.signList.find(v => v.signId == signId);
+      if (sign.status === SignStatus.ing) {
+        this.fullScreen();
+        this.showList = false;
+      }
     }
   },
   mounted() {
@@ -142,5 +170,17 @@ export default {
 }
 .sign-method {
   margin-left: 10px;
+}
+.tool-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tool-btns button {
+  margin-bottom: 10px;
+}
+#main {
+  background-color: #fff;
 }
 </style>

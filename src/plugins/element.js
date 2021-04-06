@@ -17,10 +17,12 @@ import {
   Select,
   Option,
   Collapse,
-  CollapseItem
+  CollapseItem,
+  Progress
 } from "element-ui";
 
 Vue.use(Button);
+Vue.use(Progress);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(Select);

@@ -40,4 +40,10 @@ a {
 ::-webkit-scrollbar {
   display: none; /* Chrome Safari */
 }
+.p10 {
+  padding: 10px;
+}
+.p20 {
+  padding: 20px;
+}
 </style>
