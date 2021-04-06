@@ -1,14 +1,11 @@
-import http from '../../utils/http'
+import http from "../../utils/http";
 
-function login (code, nickname, gender, avatar) {
-  return http.post('/user/login', {
-    code,
-    nickname,
-    gender,
-    avatar
-  })
+function login(code) {
+  return http.post("/user/login/code", {
+    code
+  });
 }
 
 export default {
   login
-}
+};

@@ -15,7 +15,10 @@ module.exports = {
       "/api": {
         target:
           "https://service-agthqjcf-1256505457.cd.apigw.tencentcs.com/release",
-        changeOrigin: true
+        changeOrigin: true,
+        pathRewrite: {
+          "/api": ""
+        }
       }
     }
   }

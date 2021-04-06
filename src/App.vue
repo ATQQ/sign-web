@@ -14,12 +14,10 @@ export default {
       localStorage.setItem("token", token);
     }
     if (localStorage.getItem("token")) {
-      this.$router.push({
+      this.$router.replace({
         name: "activity"
       });
     }
-    // 其它方式获取token
-    // this.$api.user.login("1234", "dsd", 0, "313");
   }
 };
 </script>
