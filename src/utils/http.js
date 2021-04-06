@@ -33,7 +33,7 @@ http.interceptors.response.use(
       let errMsg = "";
       switch (code) {
         case StatusCode.nowPower:
-          errMsg = "没有权限";
+          errMsg = "登陆过期,没有权限";
           if (!goHome) {
             goHome = true;
             setTimeout(() => {

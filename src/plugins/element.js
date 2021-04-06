@@ -5,6 +5,7 @@ import {
   Container,
   Input,
   Main,
+  Aside,
   Link,
   Step,
   Steps,
@@ -12,10 +13,19 @@ import {
   MenuItem,
   PageHeader,
   Tag,
-  Popover
+  Popover,
+  Select,
+  Option,
+  Collapse,
+  CollapseItem
 } from "element-ui";
 
 Vue.use(Button);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
+Vue.use(Select);
+Vue.use(Aside);
+Vue.use(Option);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Main);

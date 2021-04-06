@@ -39,6 +39,13 @@
         </router-link>
       </li>
     </ul>
+    <div v-if="manageActivities.length === 0">
+      <h1>没有活动信息喔,扫码打开小程序创建</h1>
+      <img
+        src="https://img.cdn.sugarat.top/mdImg/MTYxNzYwODI3MDQ4OA==617608270488"
+        style="width:50%"
+      />
+    </div>
   </div>
 </template>
 
