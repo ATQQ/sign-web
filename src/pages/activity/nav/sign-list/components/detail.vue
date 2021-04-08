@@ -223,7 +223,7 @@ export default {
         }
         this.remainTime =
           new Date(this.signData.endTime).getTime() - Date.now();
-        this.rTime = new Date(this.remainTime).Format("mm 分 ss 秒S");
+        this.rTime = new Date(this.remainTime).Format("mm分ss秒S");
         this.refreshTime();
       });
     }

@@ -18,10 +18,14 @@ import {
   Option,
   Collapse,
   CollapseItem,
-  Progress
+  Progress,
+  Table,
+  TableColumn
 } from "element-ui";
 
 Vue.use(Button);
+Vue.use(Table);
+Vue.use(TableColumn);
 Vue.use(Progress);
 Vue.use(Collapse);
 Vue.use(CollapseItem);

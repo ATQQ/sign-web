@@ -37,7 +37,7 @@ a {
   text-align: center;
   color: #2c3e50;
 }
-::-webkit-scrollbar {
+::-webkit-scrollbar-horizontal {
   display: none; /* Chrome Safari */
 }
 .p10 {
