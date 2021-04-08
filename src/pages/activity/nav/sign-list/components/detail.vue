@@ -186,7 +186,8 @@ export default {
       },
       remainTime: 0,
       scale: 1,
-      activePeople: ""
+      activePeople: "",
+      rTime: ""
     };
   },
   methods: {
@@ -214,6 +215,17 @@ export default {
             this.timer = setTimeout(this.refresh, 1200);
           });
       }
+    },
+    refreshTime() {
+      requestAnimationFrame(() => {
+        if (this.remainTime < 1000 || this.stop) {
+          return "";
+        }
+        this.remainTime =
+          new Date(this.signData.endTime).getTime() - Date.now();
+        this.rTime = new Date(this.remainTime).Format("mm 分 ss 秒S");
+        this.refreshTime();
+      });
     }
   },
   computed: {
@@ -245,6 +257,7 @@ export default {
       const { status, endTime } = this.signData;
       if (status === this.SignStatus.ing && this.remainTime === 0) {
         this.remainTime = new Date(endTime).getTime() - Date.now();
+        this.refreshTime();
       } else if (status !== this.SignStatus.ing) {
         this.remainTime = 0;
       }
@@ -279,15 +292,6 @@ export default {
           return a.rank - b.rank;
         });
       return data;
-    },
-    rTime() {
-      if (this.remainTime < 1000) {
-        return "";
-      }
-      const min = ~~(this.remainTime / 1000 / 60);
-      const second = ~~(this.remainTime / 1000 - min * 60);
-      this.remainTime = new Date(this.signData.endTime).getTime() - Date.now();
-      return `${min}分${second}秒`;
     },
     qcValue() {
       if (this?.signDetail?.qrcode) {
