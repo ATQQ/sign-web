@@ -51,6 +51,9 @@ export default {
     this.query = this.$route.query;
     this.activity = this.getActivityById(this.query.id);
     this.title = this.title + this.activity.name;
+    Object.assign(this.query, {
+      title: this.title
+    });
   }
 };
 </script>

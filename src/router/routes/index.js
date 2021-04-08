@@ -12,7 +12,7 @@ const routes = [
   {
     path: "/activity/nav",
     name: "activity-nav",
-    redirect: "/activity/nav/overview",
+    redirect: "/activity/nav/sign",
     component: ActivityNav,
     children: [
       {

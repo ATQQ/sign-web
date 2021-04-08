@@ -3,12 +3,16 @@
     <h1>
       活动签到概况
     </h1>
-    <div class="p10">
-      <el-button icon="el-icon-refresh" round @click="loadData">刷新</el-button>
-      <el-button icon="el-icon-download" round>导出</el-button>
-    </div>
     <el-container v-if="column.length > 0">
       <el-main>
+        <div class="p10">
+          <el-button icon="el-icon-refresh" round @click="loadData"
+            >刷新</el-button
+          >
+          <el-button icon="el-icon-download" round @click="download"
+            >导出</el-button
+          >
+        </div>
         <el-table
           :data="signData"
           style="width: 100%"
@@ -56,6 +60,9 @@
         </el-table>
       </el-main>
     </el-container>
+    <div v-else>
+      <h2>暂无签到数据</h2>
+    </div>
   </div>
 </template>
 
@@ -68,6 +75,8 @@ import {
   RecordStatusColor,
   RecordStatusText
 } from "@/constants";
+import { tableToEexcell } from "@/utils/excel";
+
 export default {
   data() {
     return {
@@ -110,10 +119,35 @@ export default {
             p[s.signId] = r;
           });
         });
-        this.signData = [...people, ...people, ...people];
+        this.signData = [...people];
         this.column = [...sign];
         Message.success("刷新完成");
       });
+    },
+    download() {
+      const headers = ["名称"];
+      this.column.forEach((_, idx) => {
+        headers.push(`第${idx + 1}次`);
+      });
+      this.AnalyzeColumn.forEach(v => {
+        headers.push(v.label);
+      });
+      const data = this.signData.map(s => {
+        const row = [s.name];
+        this.column.forEach(c => {
+          row.push(RecordStatusText[s[c.signId].status]);
+        });
+        this.AnalyzeColumn.forEach(a => {
+          row.push(s[a.prop]);
+        });
+        return row;
+      });
+      tableToEexcell(
+        headers,
+        data,
+        `${this.$route.query.title || Date.now()}.xls`
+      );
+      Message.success("导出完成");
     }
   },
   mounted() {
