@@ -69,6 +69,11 @@
         </div>
       </el-main>
     </el-container>
+    <footer>
+      <a href="https://beian.miit.gov.cn" target="_blank"
+        >蜀ICP备19011724号-2</a
+      >
+    </footer>
   </div>
 </template>
 <script>
@@ -194,5 +199,16 @@ export default {
 }
 .next-btn {
   margin: 10px;
+}
+footer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+footer a {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #409eff;
 }
 </style>
