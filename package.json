@@ -6,13 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "cloudbase framework deploy",
-    "deploy:client": "cloudbase framework deploy client",
+    "deploy:client": "tcb framework deploy",
     "dev": "npm run serve",
-    "prestart": "npm install"
+    "compress": "bash ./build/compress.sh",
+    "deploy": "bash ./build/deploy.sh",
+    "upload": "bash ./build/upload.sh",
+    "prestart": "npm install",
+    "oneStep": "npm run build && npm run compress && npm run upload && npm run deploy"
   },
   "dependencies": {
-    "@cloudbase/vue-provider": "^0.5.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.4.5",

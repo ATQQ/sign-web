@@ -3,31 +3,28 @@ import { StatusCode } from "../constants";
 import router from "../router";
 import { Message } from "element-ui";
 const http = axios;
-http.defaults.baseURL =
-  process.env.NODE_ENV !== "production"
-    ? "/api"
-    : "https://service-agthqjcf-1256505457.cd.apigw.tencentcs.com/release";
+http.defaults.baseURL = process.env.NODE_ENV !== "production" ? "/api" : "/api";
 http.defaults.headers = {
-  "content-Type": "application/json"
+  "content-Type": "application/json",
 };
 
 http.interceptors.request.use(
-  config => {
+  (config) => {
     // 所有请求都携带token
     Object.assign(config.headers, {
-      token: window.localStorage.getItem("token")
+      token: window.localStorage.getItem("token"),
     });
     // 发送之前操作config
     return config;
   },
-  err => {
+  (err) => {
     // 处理错误
     return Promise.reject(err);
   }
 );
 let goHome = false;
 http.interceptors.response.use(
-  response => {
+  (response) => {
     const { code } = response.data;
     if (code !== 0) {
       let errMsg = "";
@@ -40,7 +37,7 @@ http.interceptors.response.use(
               goHome = false;
               localStorage.removeItem("token");
               router.replace({
-                path: "/"
+                path: "/",
               });
             }, 1000);
           }
@@ -61,7 +58,7 @@ http.interceptors.response.use(
     // 返回前操作
     return response.data;
   },
-  err => {
+  (err) => {
     return Promise.reject(err);
   }
 );

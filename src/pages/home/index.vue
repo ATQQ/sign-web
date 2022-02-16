@@ -21,22 +21,13 @@
             @click="handleLogin"
             :round="inputOk"
             :type="inputOk ? 'success' : 'primary'"
-            >登录</el-button
-          >
-          <el-link
-            style="margin-left:20px;"
-            type="primary"
-            @click="showMan = !showMan"
-            >如何获取?</el-link
-          >
+          >登录</el-button>
+          <el-link style="margin-left:20px;" type="primary" @click="showMan = !showMan">如何获取?</el-link>
         </div>
         <div class="tips" v-show="showMan">
           <el-steps :active="step" finish-status="success" simple>
             <el-step title="1 扫小程序码" icon="el-icon-mobile-phone"></el-step>
-            <el-step
-              title="2 选择右下角电脑访问"
-              icon="el-icon-picture"
-            ></el-step>
+            <el-step title="2 选择右下角电脑访问" icon="el-icon-picture"></el-step>
             <el-step title="3 刷新验证码" icon="el-icon-key"></el-step>
           </el-steps>
           <el-button
@@ -47,8 +38,7 @@
               }
             "
             type="primary"
-            >下一步</el-button
-          >
+          >下一步</el-button>
           <div class="pics">
             <img
               v-show="step === 0"
@@ -70,9 +60,7 @@
       </el-main>
     </el-container>
     <footer>
-      <a href="https://beian.miit.gov.cn" target="_blank"
-        >蜀ICP备19011724号-2</a
-      >
+      <a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备19011724号</a>
     </footer>
   </div>
 </template>
