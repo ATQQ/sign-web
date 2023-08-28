@@ -77,7 +77,7 @@
 import { mapActions, mapState } from "vuex";
 import { Message } from "element-ui";
 import { SignStatusText, SignStatus } from "@/constants";
-import SignDetail from "./components/detail";
+import SignDetail from "./components/detail.vue";
 export default {
   components: {
     SignDetail
