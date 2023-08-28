@@ -74,7 +74,7 @@ import {
   RecordStatus,
   RecordStatusColor,
   RecordStatusText
-} from "@/constants";
+} from "@/constants/index.js";
 import { tableToEexcell } from "@/utils/excel";
 
 export default {

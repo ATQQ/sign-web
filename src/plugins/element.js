@@ -1,46 +1,5 @@
 import Vue from "vue";
-import {
-  Button,
-  Header,
-  Container,
-  Input,
-  Main,
-  Aside,
-  Link,
-  Step,
-  Steps,
-  Menu,
-  MenuItem,
-  PageHeader,
-  Tag,
-  Popover,
-  Select,
-  Option,
-  Collapse,
-  CollapseItem,
-  Progress,
-  Table,
-  TableColumn
-} from "element-ui";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.use(Button);
-Vue.use(Table);
-Vue.use(TableColumn);
-Vue.use(Progress);
-Vue.use(Collapse);
-Vue.use(CollapseItem);
-Vue.use(Select);
-Vue.use(Aside);
-Vue.use(Option);
-Vue.use(Container);
-Vue.use(Header);
-Vue.use(Main);
-Vue.use(Input);
-Vue.use(Link);
-Vue.use(Step);
-Vue.use(Steps);
-Vue.use(Menu);
-Vue.use(MenuItem);
-Vue.use(PageHeader);
-Vue.use(Tag);
-Vue.use(Popover);
+Vue.use(ElementUI);
